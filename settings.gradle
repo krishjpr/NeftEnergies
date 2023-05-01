@@ -1,0 +1,41 @@
+pluginManagement {
+    buildscript {
+        repositories {
+            mavenCentral()
+            maven {
+                url = uri("https://storage.googleapis.com/r8-releases/raw")
+            }
+        }
+        dependencies {
+            classpath("com.android.tools:r8:8.0.34")
+            classpath('com.google.guava:guava:30.1.1-jre')  // <-- THIS IS REQUIRED UNTIL R8 3.2.4-dev
+        }
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url 'https://maven.google.com'
+        }
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+    // For mo-engage catalog version please see this link
+    // https://developers.moengage.com/hc/en-us/articles/4407395989268-Installing-Version-Catalog
+    versionCatalogs {
+        create("moengage") {
+            from("com.moengage:android-dependency-catalog:2.8.0")
+        }
+    }
+}
+
+rootProject.name = "Neft Energies"
+include ':app' , ':tokenautocomplete',':linkpreviewlibrary'
+
